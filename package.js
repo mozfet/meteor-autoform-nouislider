@@ -11,9 +11,9 @@ Npm.depends({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.4.3.2');
-  api.use(['templating@1.3.2', 'underscore@1.0.10', 'reactive-var@1.0.11', 'blaze@2.3.2'], 'client');
-  api.use('ecmascript@0.6.3');
+  api.versionsFrom('METEOR@1.4');
+  api.use(['templating', 'underscore', 'reactive-var', 'blaze'], 'client');
+  api.use('ecmascript@0.7.2');
   api.use('aldeed:template-extension@4.1.0');
   api.use('aldeed:autoform@6.0.0');
   api.addFiles([
