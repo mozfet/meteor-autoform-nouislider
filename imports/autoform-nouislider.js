@@ -1,17 +1,18 @@
-/* global AutoForm, _, Template */
+/*jshint esversion: 6 */
 
+/* global AutoForm, _, Template */
 import noUiSlider from 'nouislider';
 import 'nouislider/distribute/nouislider.css';
 import './autoform-nouislider.html';
 import './autoform-nouislider.css';
 
-AutoForm.addInputType("noUiSlider", {
-  template: "afNoUiSlider",
+AutoForm.addInputType('noUiSlider', {
+  template: 'afNoUiSlider',
   valueOut: function(){
     var slider = this.find('.nouislider')[0];
-    var isDecimal = this.closest(".at-nouislider").data("decimal");
+    var isDecimal = this.closest('.at-nouislider').data('decimal');
 
-    if( this.attr("data-type") === "Object" ){
+    if( this.attr('data-type') === 'Object' ){
       var parser = (isDecimal)? parseFloat : parseInt;
       var first = parser.call(null, slider.noUiSlider.get()[0]);
       var second = parser.call(null, slider.noUiSlider.get()[1]);
@@ -30,16 +31,16 @@ Template.afNoUiSlider.helpers({
   atts: function () {
     var data = Template.currentData(); // get data reactively
     var atts = data.atts;
-    atts["data-type"] = data.schemaType.name;
-    if( atts["class"] ){
-      atts["class"] += " at-nouislider";
+    atts['data-type'] = data.schemaType.name;
+    if( atts['class'] ){
+      atts['class'] += ' at-nouislider';
     }else{
-      atts["class"] = "at-nouislider";
+      atts['class'] = 'at-nouislider';
     }
 
     atts.doLabels = ( atts.labelLeft || atts.labelRight );
 
-    atts["data-decimal"] = data.decimal;
+    atts['data-decimal'] = data.decimal;
 
     return _.omit(atts, 'noUiSliderOptions', 'noUiSlider_pipsOptions');
   }
@@ -54,7 +55,7 @@ var calculateOptions = function(data){
 
   // Adjust data initialization based on schema type
   if( options.start === undefined ){
-    if( data.schemaType.name === "Object" ){
+    if( data.schemaType.name === 'Object' ){
       if( data.value && data.value.lower ){
         options.start = [
           data.value.lower,
@@ -62,8 +63,8 @@ var calculateOptions = function(data){
         ];
       }else{
         options.start = [
-          typeof data.min === "number" ? data.min : 0,
-          typeof data.max === "number" ? data.max : 100
+          typeof data.min === 'number' ? data.min : 0,
+          typeof data.max === 'number' ? data.max : 100
         ];
       }
       options.connect = true;
@@ -74,8 +75,8 @@ var calculateOptions = function(data){
 
   if( options.range === undefined ){
     options.range = {
-      min: typeof options.min === "number" ? options.min : 0,
-      max: typeof options.max === "number" ? options.max : 100
+      min: typeof options.min === 'number' ? options.min : 0,
+      max: typeof options.max === 'number' ? options.max : 100
     };
   }
 
