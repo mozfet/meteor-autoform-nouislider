@@ -6,7 +6,6 @@ Package.describe({
 });
 
 Npm.depends({
-  'simpl-schema': '0.2.3',
   'nouislider': '9.2.0'
 });
 
