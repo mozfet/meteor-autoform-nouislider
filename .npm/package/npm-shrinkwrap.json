@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "nouislider": {
-      "version": "9.2.0",
-      "resolved": "https://registry.npmjs.org/nouislider/-/nouislider-9.2.0.tgz",
-      "from": "nouislider@9.2.0"
-    }
-  }
-}

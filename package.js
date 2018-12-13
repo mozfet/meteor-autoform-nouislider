@@ -1,21 +1,20 @@
 Package.describe({
   name: 'mozfet:autoform-materialize-nouislider',
-  summary: 'Dual value slider for autoform.',
-  version: '2.0.4',
+  summary: 'Material styled slider for autoform.',
+  version: '3.0.0',
   git: 'https://github.com/mozfet/meteor-autoform-nouislider'
-});
+})
 
 Npm.depends({
-  'nouislider': '9.2.0'
-});
+})
 
 Package.onUse(function(api) {
-  api.versionsFrom('METEOR@1.4');
-  api.use(['templating', 'underscore', 'reactive-var', 'blaze'], 'client');
-  api.use('ecmascript@0.7.2');
-  api.use('aldeed:template-extension@4.1.0');
-  api.use('aldeed:autoform@6.0.0');
+  api.versionsFrom('METEOR@1.8');
+  api.use(['ecmascript','templating', 'underscore', 'reactive-var', 'blaze'],
+    'client');
+  api.use('fourseven:scss@4.10.0');
+  api.use('aldeed:autoform@6.3.0');
   api.addFiles([
     'index.js',
   ], 'client');
-});
+})
