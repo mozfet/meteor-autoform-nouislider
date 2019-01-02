@@ -1,12 +1,12 @@
 // imports
-import noUiSlider from 'nouislider'
 import { EJSON } from 'meteor/ejson'
-import './autoform-nouislider.html'
+import noUiSlider from './materialize/nouislider.js'
 import './materialize/nouislider.css'
+import './autoform-nouislider.html'
 
 // add autoform input type
-AutoForm.addInputType('noUiSlider2', {
-  template: 'afNoUiSlider2',
+AutoForm.addInputType('noUiSlider', {
+  template: 'afNoUiSlider',
   valueOut: function(){
     const slider = this.find('.nouislider')[0]
     const isDecimal = this.closest('.at-nouislider').data('decimal')
@@ -26,7 +26,7 @@ AutoForm.addInputType('noUiSlider2', {
 })
 
 // helpers
-Template.afNoUiSlider2.helpers({
+Template.afNoUiSlider.helpers({
   atts() {
     const data = Template.currentData()
     const atts = data.atts
@@ -43,7 +43,6 @@ Template.afNoUiSlider2.helpers({
 })
 
 function calculateOptions (data) {
-  console.log('afNoUiSlider2 calculateOptions data:', data)
   const schemaAtts = _.pick(data, 'min', 'max')
   const autoformOptions = _.pick(data.atts || {}, 'min', 'max', 'step', 'start',
       'range')
@@ -118,14 +117,14 @@ function calculateOptions (data) {
   }
 
   // return options
-  console.log('afNoUiSlider2 options', _.clone(options))
+  console.log('afNoUiSlider options', _.clone(options))
   return options
 }
 
 // on rendered
-Template.afNoUiSlider2.rendered = function () {
-  const template = this
-  const $s = template.$('.nouislider')
+Template.afNoUiSlider.rendered = function () {
+  const instance = Template.instance()
+  const $s = instance.$('.nouislider')
   const sliderElement = $s.get(0)
 
   const setup = c => {
@@ -152,5 +151,5 @@ Template.afNoUiSlider2.rendered = function () {
       )
     }
   }
-  template.autorun(setup)
+  instance.autorun(setup)
 }
